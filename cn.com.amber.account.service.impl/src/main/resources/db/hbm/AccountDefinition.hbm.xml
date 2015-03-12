@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-11 11:56:28 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+ <class name="cn.com.amber.account.pojo.PojoAccountDefinition"
+  schema="ACCOUNT" table="account_definition">
+  <comment>描述账户定义</comment>
+  <id name="id" type="long">
+   <column name="id" precision="11" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column length="64" name="name" not-null="true">
+    <comment>名称</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="minSurplus" type="long">
+   <column name="min_surplus" not-null="true" precision="12" scale="0">
+    <comment>最小余额</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="maxSurplus" type="long">
+   <column name="max_surplus" not-null="true" precision="12" scale="0">
+    <comment>最大余额</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="userOwnMaxCount" type="boolean">
+   <column name="user_own_max_count" not-null="true" precision="1" scale="0">
+    <comment>允许用户拥有最大数目</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="isAllowChild" type="boolean">
+   <column name="is_allow_child" not-null="true" precision="1" scale="0">
+    <comment>是否允许有子账户</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="isAllowRelate" type="boolean">
+   <column name="is_allow_relate" not-null="true" precision="1" scale="0">
+    <comment>是否允许关联其他账户·</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="type" type="string">
+   <column length="2" name="type" not-null="true">
+    <comment>账户类型，约束请查阅《数据字典》</comment>
+   </column>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="accounts"
+   sort="unsorted" table="account">
+   <key>
+    <column name="account_definition_id" not-null="true" precision="11" scale="0">
+    </column>
+   </key>
+   <one-to-many class="cn.com.amber.account.pojo.Account"/>
+  </set>
+ </class>
+</hibernate-mapping>

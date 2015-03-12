@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-11 14:54:15 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+ <class name="cn.com.amber.account.pojo.PojoAccountSurplusLog"
+  schema="ACCOUNT" table="account_surplus_log">
+  <comment>账户余额流水</comment>
+  <id name="id" type="long">
+   <column name="id" precision="11" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="logSeqNo" type="big_decimal">
+   <column name="log_seq_no" not-null="true" precision="24" scale="0">
+    <comment>账户变动流水号</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="accountingFlag" type="string">
+   <column length="1" name="accounting_flag" not-null="true">
+    <comment>记账标记,C:借记;D:贷记</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="amount" type="long">
+   <column name="amount" not-null="true" precision="12" scale="0">
+    <comment>金额</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="sysSerLogId" type="long">
+   <column name="sys_ser_log_id" not-null="true" precision="11" scale="0">
+    <comment>系统服务日志id</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="accountId" type="java.lang.Long">
+   <column name="account_id" precision="11" scale="0">
+    <comment>账户id</comment>
+   </column>
+  </property>
+ </class>
+</hibernate-mapping>

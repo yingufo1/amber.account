@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<tx:annotation-driven />
+	
+	<context:component-scan base-package="cn.com.amber.account.impl">
+	</context:component-scan>
+	
+	<bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		id="sessionFactory">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.pool_size">0</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>db/hbm/Account.hbm.xml</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	 <jee:jndi-lookup id="dataSource" jndi-name="/jdbc/amber-account"
+		resource-ref="true" cache="true" 
+		lookup-on-startup="true" default-ref="devDataSource" ></jee:jndi-lookup>
+	
+	<bean id="devDdataSource"
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver">
+		</property>
+		<property name="url"
+			value="jdbc:oracle:thin:@192.168.22.56:1521:oper">
+		</property>
+		<property name="username" value="account"></property>
+		<property name="password" value="account"></property>
+		<property name="dialect"
+			value="org.hibernate.dialect.Oracle10Dialectr">
+		</property>
+	</bean> 
+</beans>
+
