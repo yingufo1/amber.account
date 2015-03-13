@@ -18,7 +18,6 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.connection.pool_size">0</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
 			</props>
 		</property>
 		<property name="mappingResources">

@@ -3,9 +3,6 @@
 
 <hibernate-reverse-engineering>
 	 
-  <table-filter match-schema="ACCOUNT" match-name="account"/>
-  <table-filter match-schema="ACCOUNT" match-name="account_definition"/>
-  <table-filter match-schema="ACCOUNT" match-name="system_service_log"/>
-  <table-filter match-schema="ACCOUNT" match-name="account_surplus_log"/>
+  <table-filter match-schema="ACCOUNT" match-name="account_category"/> 
   
 </hibernate-reverse-engineering>

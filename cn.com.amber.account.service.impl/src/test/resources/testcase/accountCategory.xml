@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+	<head>
+	</head>
+	<content>
+		<testcase>
+			<name>测试类别</name>
+			<code>0000001</code>
+			<accMinSurplus></accMinSurplus>
+			<accMaxSurplus></accMaxSurplus>
+			<isAllowChild></isAllowChild>
+			<isAllowRelate></isAllowRelate>
+			<isLeafNode>0</isLeafNode>
+			<level>1</level>
+			<parentId>-1</parentId>
+		</testcase>
+	</content>
+</message>
