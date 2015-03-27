@@ -2932,10 +2932,10 @@ TableComment 0 Arial Unicode MS,8,N</a:FontList>
 <o:Table Id="o22">
 <a:ObjectID>D47D9EE6-0B70-463F-A440-111A83766C78</a:ObjectID>
 <a:Name>账户分类</a:Name>
-<a:Code>ACCOUNT_CATEGORY</a:Code>
+<a:Code>ACC_CATEGORY</a:Code>
 <a:CreationDate>1425867296</a:CreationDate>
 <a:Creator>yangying</a:Creator>
-<a:ModificationDate>1427334978</a:ModificationDate>
+<a:ModificationDate>1427334749</a:ModificationDate>
 <a:Modifier>yangying</a:Modifier>
 <a:Comment>描述账户分类.
 为了支持多层次的账户,定义这个实体。账户分类是可多级别的，
@@ -3036,11 +3036,11 @@ acc_min_surplus，acc_max_surplus， is_allow_relate这几个属性的。所以�
 </o:Column>
 <o:Column Id="o39">
 <a:ObjectID>B1785109-F78C-46E2-A37E-FE59E4F06F2F</a:ObjectID>
-<a:Name>CATEGORY_LEVEL</a:Name>
-<a:Code>CATEGORY_LEVEL</a:Code>
+<a:Name>LEVEL</a:Name>
+<a:Code>LEVEL</a:Code>
 <a:CreationDate>1426151081</a:CreationDate>
 <a:Creator>yangying</a:Creator>
-<a:ModificationDate>1427342474</a:ModificationDate>
+<a:ModificationDate>1427334749</a:ModificationDate>
 <a:Modifier>yangying</a:Modifier>
 <a:Comment>级别.顶级为1,次级为2,以此类推</a:Comment>
 <a:DataType>NUMBER(2)</a:DataType>
