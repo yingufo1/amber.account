@@ -1,4 +1,38 @@
-*/target/*
-*/.settings/*
-.metadata/*
-RemoteSystemsTempFiles/*
+# OS generated files
+.DS_Store
+Thumbs.db
+*~
+._*
+.*
+
+# Editor Files
+*.bak
+*.swp
+
+# Gradle Files
+.gradle
+.m2
+
+# Build output directies
+build/
+target/
+log/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Eclipse project file
+#.classpath
+#.project
+#.settings
+.metadata
+bin/
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea
+out
