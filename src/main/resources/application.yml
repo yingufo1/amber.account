@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: amber-account # 在这里填写应用名
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://139.9.179.180:8761/eureka,http://139.9.179.180:8762/eureka
+    healthcheck:
+      enabled: true
+    fetchRegistry: true
+  instance:
+    preferIpAddress: true
+
+info:
+  app:
+    name: ${spring.application.name}
+
+#apollo配置
+app:
+  id: amber-account
+apollo:
+  cacheDir: /opt/data/                       #配置本地配置缓存目录
+  cluster: default                           #指定使用哪个集群的配置
+  meta: http://82.157.252.130:8080        #DEV环境配置中心地址
+  autoUpdateInjectedSpringProperties: true
+  bootstrap:
+    enabled: true
+    namespaces: OID1.database,application
+
+server:
+  port: 8081
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  refresh:
+    enabled: false
+ribbon:
+  ConnectTimeout: 30000
+  ReadTimeout: 600000
+feign:
+  httpclient:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
