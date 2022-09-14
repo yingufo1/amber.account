@@ -1,0 +1,1 @@
+package cn.com.amber.biz;import cn.com.amber.mapper.AccountMapper;import org.springframework.stereotype.Service;import javax.annotation.Resource;/** * 账户业务服务 * * @author yangying * @version 1.0 * @since 2022/9/14 **/@Servicepublic class AccountBizService {    @Resource    private AccountMapper accountMapper;}
