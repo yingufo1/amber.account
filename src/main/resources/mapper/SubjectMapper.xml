@@ -21,18 +21,38 @@
         id, subject_name, subject_no,level,parent_id,direction,element,creator, gmt_created, modifier,
         gmt_modified,is_deleted
     </sql>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from account
         where id = #{id,jdbcType=BIGINT} AND is_deleted='N'
     </select>
+
     <select id="selectBySubjectNo" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from t_subject
         where subject_no = #{subjectNo,jdbcType=VARCHAR} AND is_deleted='N'
     </select>
+
+    <select id="selectBySubjectNoList" parameterType="java.util.List" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_subject
+        where subject_no in
+        <foreach collection="list" item="subjectNo" index="index" open="(" close=")" separator=",">
+            #{subjectNo}
+        </foreach>
+        AND is_deleted='N'
+    </select>
+
+    <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_subject where is_deleted='N'
+    </select>
+
     <insert id="insert" parameterType="cn.com.amber.entity.Account">
         insert into t_subject (subject_name, subject_no,level,parent_id,direction,element,creator, gmt_created,
         modifier, gmt_modified)

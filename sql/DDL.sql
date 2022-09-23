@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `amber_00`.`t_account_0000`;
 CREATE TABLE `amber_00`.`t_account_0000`(
   `id` BIGINT(20) NOT NULL COMMENT '唯一主键',
   `account_no` VARCHAR(32) NOT NULL COMMENT '账户号，唯一',
-  `level` TINYINT(4) NULL COMMENT '账户级别',
+  `level` TINYINT(4) NOT NULL COMMENT '账户级别',
   `account_name` VARCHAR(64) NULL COMMENT '账户名',
   `parent_id` BIGINT(20) NULL COMMENT '父账户id，通过id关联',
   `balance` DECIMAL(20,2) NOT NULL COMMENT '账户余额',
@@ -12,6 +12,8 @@ CREATE TABLE `amber_00`.`t_account_0000`(
   `direction` char(1) NOT NULL COMMENT '余额方向，C-贷记;D-借记',
   `status` TINYINT(4) NOT NULL DEFAULT '1' COMMENT '状态，1-正常；2-冻结；3-销户',
   `forbidden_flag` TINYINT(4) NOT NULL  DEFAULT '11' COMMENT '止入止出标记,11-可入可出；01-准入不准出；10-准出不准入;00-止入止出',
+  `legal_person_type` TINYINT(4) NULL COMMENT '账户类型,1-个人账户；2-企业账户-资产端；3-企业账户-资金端；',
+  `legal_person_id` VARCHAR(32) NOT NULL COMMENT '法人用户id',
   `gmt_created` DATETIME NULL COMMENT '创建时间',
   `creator` VARCHAR(32) NULL COMMENT '创建者',
   `gmt_modified` DATETIME NULL COMMENT '最后修改时间',
