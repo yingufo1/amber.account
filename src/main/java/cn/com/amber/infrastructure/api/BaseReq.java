@@ -1,0 +1,1 @@
+package cn.com.amber.infrastructure.api;import lombok.Getter;import lombok.NoArgsConstructor;/** * 基础请求类 * * @author yangying * @version 1.0 * @since 2022/9/14 **/@Getter@NoArgsConstructorpublic abstract class BaseReq {    protected String reqId;    protected BaseReq(String reqId) {        this.reqId = reqId;    }}

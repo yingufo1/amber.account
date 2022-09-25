@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 只需配置好 log.dir 和 appName 属性-->
 <configuration debug="false">
-    <property name="log.dir" value="/Users/yangying/work/logs/alidata1/admin/${appName}"/>
-    <property name="appName" value="${appName}"/>
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <springProperty scope="context" name="server.port" source="server.port"/>
+    <property name="log.dir" value="${log.root.dir}/${APP_NAME}"/>
+    <property name="appName" value="${APP_NAME}"/>
     <property name="MONITOR_PATTERN"
               value="%d [%X{T}] %-5p [%c] [%F:%L] [trace=%X{X-B3-TraceId:-},span=%X{X-B3-SpanId:-},parent=%X{X-B3-ParentSpanId:-}] - %msg%n"/>
 
@@ -14,12 +16,12 @@
     </appender>
 
     <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_info.log</file>
+        <file>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_info.log</file>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_info_%d{yyyy-MM-dd}.log
+            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_info_%d{yyyy-MM-dd}.log
             </fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -29,12 +31,12 @@
     </appender>
 
     <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_error.log</file>
+        <file>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_error.log</file>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>WARN</level>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_error_%d{yyyy-MM-dd}.log
+            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_error_%d{yyyy-MM-dd}.log
             </fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -44,12 +46,12 @@
     </appender>
 
     <appender name="bizAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_biz.log</file>
+        <file>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_biz.log</file>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_app_${appName}_lt_biz-%d{yyyy-MM-dd}.log
+            <fileNamePattern>${log.dir}/logs/${HOSTNAME}_${server.port}_app_${appName}_lt_biz-%d{yyyy-MM-dd}.log
             </fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -59,7 +61,7 @@
     </appender>
 
     <logger name="org.apache.kafka" level="off" />
-
+    <logger name="ShardingSphere-SQL" level="WARN" />
     <root>
         <level value="INFO"/>
         <appender-ref ref="STDOUT"/>
