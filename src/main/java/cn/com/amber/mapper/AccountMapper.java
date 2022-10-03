@@ -14,4 +14,6 @@ public interface AccountMapper {
     public List<Account> selectByLegalPersonId(String legalPersonId);
 
     public int saveBatch(List<Account> accountList);
+
+    public List<Account> selectDetailAccountByLegalPersonIdAndParentId(String legalPersonId,Long parentId);
 }

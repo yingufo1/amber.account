@@ -62,4 +62,25 @@
         #{gmtCreated,jdbcType=TIMESTAMP},
         #{modifier,jdbcType=VARCHAR}, #{gmtModified,jdbcType=TIMESTAMP})
     </insert>
+
+    <select id="selectByElement" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_subject
+        where element = #{element,jdbcType=TINYINT} AND is_deleted='N'
+    </select>
+
+    <select id="selectBySubjectNoAndElement" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_subject
+        where subject_no = #{subjectNo,jdbcType=VARCHAR} AND element = #{element,jdbcType=TINYINT}  AND is_deleted='N'
+    </select>
+
+    <select id="selectByParentId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_subject
+        where parent_id = #{parentId,jdbcType=BIGINT} AND is_deleted='N'
+    </select>
 </mapper>

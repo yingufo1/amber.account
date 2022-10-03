@@ -25,7 +25,7 @@ info:
 
 #apollo配置
 app:
-  id: amber-account
+  id: ${spring.application.name}
 apollo:
   cacheDir: /opt/data/                       #配置本地配置缓存目录
   cluster: default                           #指定使用哪个集群的配置
@@ -37,6 +37,8 @@ apollo:
 
 server:
   port: 8080
+  servlet:
+    context-path: /${spring.application.name}  #应用访问路径，与spring保持一致，尽量不要改
 
 endpoints:
   restart:

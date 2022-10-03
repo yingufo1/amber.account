@@ -1,0 +1,1 @@
+package cn.com.amber.api.dto.req;import cn.com.amber.infrastructure.api.BaseReq;import lombok.Data;import javax.validation.constraints.Max;/** * 查询科目请求对象 * * @author yangying * @version 1.0 * @since 2022/9/28 **/@Datapublic class QuerySubjectReq extends BaseReq {    @Max(4)    private int element;    private String subjectNo;}
